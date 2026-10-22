@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>EnRoute Live Campus Transit Map</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <!-- Bundled Offline Leaflet CSS & JS - 100% Reliable, Zero Network/CDN Dependency -->
+    <link rel="stylesheet" href="leaflet.css" />
+    <script src="leaflet.js"></script>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html, body, #map { height: 100%; width: 100vw; overflow: hidden; background-color: #E8ECEF; }
+
+        /* Smooth marker glide transitions */
+        .leaflet-marker-icon {
+            transition: transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
+        }
+
+        /* Bus Marker Container */
+        .bus-marker-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 84px;
+            height: 52px;
+        }
+
+        /* Status Radar Pulses */
+        .radar-pulse {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            animation: pulse 2.2s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
+        }
+        .radar-pulse.live {
+            background: rgba(46, 125, 50, 0.35);
+        }
+        .radar-pulse.idle {
+            background: rgba(230, 81, 0, 0.32);
+        }
+        .radar-pulse.offline {
+            display: none;
+        }
+
+        /* Bus Floating Pill */
+        .bus-pill {
+            position: relative;
+            z-index: 3;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #021625;
+            color: #FFFFFF;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.03em;
+            padding: 5px 10px;
+            border-radius: 20px;
+            box-shadow: 0 4px 16px rgba(2, 22, 37, 0.45);
+            border: 1.5px solid #D6E7D5;
+            white-space: nowrap;
+            transition: all 0.3s ease;
+        }
+
+        .bus-pill.idle {
+            border-color: #FFE082;
+        }
+
+        .bus-pill.offline {
+            background: #2D3339;
+            border-color: #9E9E9E;
+            color: #B0BEC5;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+        }
+
+        /* Indicator Dot inside Pill */
+        .status-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .status-dot.live {
+            background: #4CAF50;
+            box-shadow: 0 0 6px #4CAF50;
+        }
+        .status-dot.idle {
+            background: #FFA000;
+            box-shadow: 0 0 6px #FFA000;
+        }
+        .status-dot.offline {
+            background: #9E9E9E;
+            box-shadow: none;
+        }
+
+        /* User Location Pulse Marker */
+        .user-marker-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+        }
+
+        .user-pulse {
+            position: absolute;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: rgba(25, 118, 210, 0.3);
+            animation: pulse 2s infinite ease-out;
+        }
+
+        .user-marker {
+            position: relative;
+            z-index: 2;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: #1976D2;
+            border: 2.5px solid #FFFFFF;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(0.5);
+                opacity: 0.9;
+            }
+            100% {
+                transform: scale(1.65);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+
+    <script>
+        var map;
+        var busMarker = null;
+        var userMarker = null;
+        var lastBusLat = null;
+        var lastBusLng = null;
+        var lastUserLat = null;
+        var lastUserLng = null;
+
+        function initMap() {
+            try {
+                map = L.map('map', {
+                    zoomControl: false,
+                    attributionControl: false,
+                    fadeAnimation: true
+                }).setView([22.7196, 75.8577], 15);
+
+                // OpenStreetMap Tile Layer - global, reliable, free, zero API key
+                var osmLayer = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    maxZoom: 19,
+                    attribution: '© OpenStreetMap'
+                });
+
+                // CartoDB Voyager Tile Layer as alternative/backup
+                var voyagerLayer = L.tileLayer('https://a.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png', {
+                    maxZoom: 19,
+                    subdomains: 'abcd'
+                });
+
+                osmLayer.on('tileerror', function() {
+                    console.warn('OSM tile error, switching to Voyager backup...');
+                    voyagerLayer.addTo(map);
+                });
+
+                osmLayer.addTo(map);
+
+                // Auto invalidate size on load to guarantee immediate rendering
+                setTimeout(function() {
+                    if (map) map.invalidateSize();
+                }, 200);
+
+                setTimeout(function() {
+                    if (map) map.invalidateSize();
+                }, 800);
+
+                console.log('Leaflet map initialized successfully');
+            } catch (e) {
+                console.error('Error initializing Leaflet map:', e);
+            }
+        }
+
+        window.onload = function() {
+            initMap();
+        };
+
+        function createBusIconHtml(label, status) {
+            var st = status || 'live';
+            return `
+                <div class="bus-marker-container">
+                    <div class="radar-pulse ${st}"></div>
+                    <div class="bus-pill ${st}">
+                        <div class="status-dot ${st}"></div>
+                        <span id="markerBusLabel">${label || 'BUS'}</span>
+                    </div>
+                </div>
+            `;
+        }
+
+        var userIcon = null;
+        function getUserIcon() {
+            if (!userIcon && typeof L !== 'undefined') {
+                userIcon = L.divIcon({
+                    className: 'user-marker-wrapper',
+                    html: `
+                        <div class="user-marker-container">
+                            <div class="user-pulse"></div>
+                            <div class="user-marker"></div>
+                        </div>
+                    `,
+                    iconSize: [32, 32],
+                    iconAnchor: [16, 16]
+                });
+            }
+            return userIcon;
+        }
+
+        // Called from Java: updateBusLocation(lat, lng, busLabel, status)
+        function updateBusLocation(lat, lng, busLabel, status) {
+            if (!map) return;
+            var label = busLabel || "BUS 12";
+            var st = status || "live";
+            lastBusLat = lat;
+            lastBusLng = lng;
+
+            var newIcon = L.divIcon({
+                className: 'bus-marker-wrapper',
+                html: createBusIconHtml(label, st),
+                iconSize: [84, 52],
+                iconAnchor: [42, 26]
+            });
+
+            if (!busMarker) {
+                busMarker = L.marker([lat, lng], { icon: newIcon }).addTo(map);
+                map.panTo([lat, lng], { animate: true, duration: 0.8 });
+            } else {
+                busMarker.setLatLng([lat, lng]);
+                busMarker.setIcon(newIcon);
+            }
+        }
+
+        // Called from Java: updateUserLocation(lat, lng)
+        function updateUserLocation(lat, lng) {
+            if (!map) return;
+            lastUserLat = lat;
+            lastUserLng = lng;
+
+            var icon = getUserIcon();
+            if (!userMarker) {
+                userMarker = L.marker([lat, lng], { icon: icon }).addTo(map);
+            } else {
+                userMarker.setLatLng([lat, lng]);
+            }
+        }
+
+        // Center smoothly on Bus
+        function centerOnBus() {
+            if (map && lastBusLat !== null && lastBusLng !== null) {
+                map.flyTo([lastBusLat, lastBusLng], 17, { animate: true, duration: 0.8 });
+            }
+        }
+
+        // Center smoothly on User
+        function centerOnUser() {
+            if (map && lastUserLat !== null && lastUserLng !== null) {
+                map.flyTo([lastUserLat, lastUserLng], 17, { animate: true, duration: 0.8 });
+            }
+        }
+
+        // Auto-fit bounds when both markers exist
+        function fitBothMarkers() {
+            if (!map) return;
+            if (busMarker && userMarker) {
+                var group = L.featureGroup([busMarker, userMarker]);
+                map.fitBounds(group.getBounds().pad(0.25), { animate: true, duration: 0.8 });
+            } else if (busMarker) {
+                centerOnBus();
+            } else if (userMarker) {
+                centerOnUser();
+            }
+        }
+
+        // Clear bus marker when switching routes
+        function clearBusMarker() {
+            if (map && busMarker) {
+                map.removeLayer(busMarker);
+                busMarker = null;
+                lastBusLat = null;
+                lastBusLng = null;
+            }
+        }
+
+        // Resize trigger
+        function resizeMap() {
+            if (map) {
+                map.invalidateSize();
+            }
+        }
+    </script>
+</body>
+</html>

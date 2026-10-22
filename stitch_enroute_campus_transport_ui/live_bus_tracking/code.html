@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{width:100vw;margin:0;padding:0;background-color:#fbf9f3;}body{overscroll-behavior:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-primary-fixed": "#081d2c", "surface-container": "#f0eee8", "on-secondary": "#ffffff", "on-surface": "#1b1c18", "surface-container-lowest": "#ffffff", "on-tertiary-fixed": "#072018", "on-tertiary": "#ffffff", "on-tertiary-fixed-variant": "#334c42", "inverse-on-surface": "#f3f1eb", "tertiary": "#011912", "error": "#ba1a1a", "secondary-fixed": "#d6e7d5", "surface-variant": "#e4e2dd", "tertiary-container": "#162e26", "surface-container-high": "#eae8e2", "on-error": "#ffffff", "background": "#fbf9f3", "surface-dim": "#dcdad4", "surface-container-low": "#f5f3ed", "on-primary-fixed-variant": "#354959", "on-background": "#1b1c18", "on-secondary-fixed": "#111f14", "surface-tint": "#4d6171", "secondary-container": "#d6e7d5", "primary-container": "#172b3a", "surface-bright": "#fbf9f3", "on-secondary-fixed-variant": "#3c4a3d", "on-primary-container": "#7e93a5", "on-tertiary-container": "#7c968b", "on-secondary-container": "#59685a", "outline-variant": "#c3c7cc", "primary-fixed": "#d0e5f9", "surface": "#fbf9f3", "error-container": "#ffdad6", "secondary": "#536254", "primary": "#021625", "surface-container-highest": "#e4e2dd", "inverse-primary": "#b4c9dc", "outline": "#73777c", "primary-fixed-dim": "#b4c9dc", "tertiary-fixed-dim": "#b1cdc0", "inverse-surface": "#30312d", "on-primary": "#ffffff", "tertiary-fixed": "#cde9dc", "secondary-fixed-dim": "#bbcbba", "on-error-container": "#93000a", "on-surface-variant": "#43474c" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "margin": "1rem", "space-lg": "1.5rem", "gutter": "1rem", "space-sm": "0.5rem", "space-md": "1rem", "space-xl": "2rem", "space-xs": "0.25rem" }, "fontFamily": { "headline-md": ["Plus Jakarta Sans"], "display-lg": ["Plus Jakarta Sans"], "body-sm": ["Plus Jakarta Sans"], "body-lg": ["Plus Jakarta Sans"], "headline-lg": ["Plus Jakarta Sans"], "headline-lg-mobile": ["Plus Jakarta Sans"], "label-sm": ["Plus Jakarta Sans"], "label-lg": ["Plus Jakarta Sans"], "headline-sm": ["Plus Jakarta Sans"], "label-md": ["Plus Jakarta Sans"], "body-md": ["Plus Jakarta Sans"] }, "fontSize": { "headline-md": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "display-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "body-sm": ["12px", { "lineHeight": "16px", "fontWeight": "400" }], "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }], "headline-lg": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "headline-lg-mobile": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "600" }], "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }], "headline-sm": ["18px", { "lineHeight": "24px", "fontWeight": "600" }], "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }], "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }] } } } }</script><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface font-body-md text-body-md text-on-surface flex flex-col min-h-screen antialiased selection:bg-secondary-container"><header class="fixed top-0 inset-x-0 z-50 bg-surface/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(23,43,58,0.04)] pt-safe"><div class="h-16 px-space-sm flex items-center justify-between"><div class="flex items-center gap-space-xs"><button aria-label="Go back" class="w-11 h-11 flex items-center justify-center rounded-full text-on-surface hover:bg-surface-container transition-colors" onclick="history.back()"><span class="material-symbols-outlined text-[22px]">arrow_back</span></button><div class="flex items-center gap-space-sm"><img alt="ENROUTE_bus_tracking_app_logo_20260916095535.jpeg" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1VtWV0rpZCj1x6oaguZwQK36RrkpMkQauidjD1H3xp1Rny8Zco7wCrH8RgeHlmUWXZr626B1sH9_J9WxrHHQYk30bv15Ytp6x_K4qne3WbUn_9TgR8bRgQrjb5aYM42AOXvzp3j5EKZmE-mK0l_6FUY4W_ZK29RH2Ktc7ufmtzOy98seqdm0cvKxaTITFP6gncG_Gsq9H9znx-lMixOL2vul89J0QmpJDHmg4zAYa4X80qtW4GpraeaKAVsYZHDvA3a8BoSpdHN_YE"/><div class="flex flex-col"><div class="flex items-center gap-1.5"><span class="font-headline-sm text-headline-sm text-primary tracking-tight font-semibold">ENROUTE</span><span class="px-1.5 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-[10px] uppercase font-semibold tracking-wider">NMIMS</span></div><h1 class="font-label-sm text-label-sm text-on-surface-variant font-medium leading-none">Live Bus Tracker</h1></div></div></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></header><main class="flex-1 flex flex-col relative w-full pt-16 pb-safe bg-surface"><div class="flex flex-col w-full relative select-none">
+<!-- Interactive Stylized Campus Map Viewport -->
+<div class="relative w-full h-[460px] overflow-hidden bg-surface-container-low shadow-inner">
+<!-- SVG Vector Stylized Campus Map Canvas -->
+<svg class="absolute inset-0 w-full h-full object-cover" fill="none" viewbox="0 0 400 480" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<!-- Soft Park Fill -->
+<pattern height="16" id="campusGreen" patternunits="userSpaceOnUse" width="16">
+<circle cx="2" cy="2" fill="#d6e7d5" opacity="0.6" r="0.75"></circle>
+</pattern>
+<!-- Soft Pulse Animation for Bus Beacon -->
+<filter height="140%" id="glow" width="140%" x="-20%" y="-20%">
+<fegaussianblur result="blur" stddeviation="3"></fegaussianblur>
+<fecomposite in="SourceGraphic" in2="blur" operator="over"></fecomposite>
+</filter>
+</defs>
+<!-- Campus Terrain & Grounds -->
+<rect fill="#f5f3ed" height="480" width="400"></rect>
+<!-- Academic Quads & Green Spaces -->
+<path d="M-20 40 C60 30 110 90 130 160 C90 200 30 180 -20 140 Z" fill="#d6e7d5" fill-opacity="0.45"></path>
+<rect fill="#d6e7d5" fill-opacity="0.5" height="130" rx="16" width="160" x="260" y="30"></rect>
+<path d="M210 240 C280 220 340 250 390 320 C320 370 250 340 200 300 Z" fill="#cde9dc" fill-opacity="0.5"></path>
+<rect fill="#d6e7d5" fill-opacity="0.4" height="110" rx="20" width="110" x="30" y="320"></rect>
+<!-- University Architectural Footprints (Quiet Tonal Silhouettes) -->
+<rect fill="#eae8e2" height="45" rx="8" width="70" x="280" y="55"></rect>
+<text fill="#73777c" font-family="Plus Jakarta Sans" font-size="7" font-weight="600" letter-spacing="0.08em" text-anchor="middle" x="315" y="80">SBM BLDG</text>
+<rect fill="#eae8e2" height="36" rx="8" width="85" x="275" y="110"></rect>
+<text fill="#73777c" font-family="Plus Jakarta Sans" font-size="7" font-weight="600" letter-spacing="0.08em" text-anchor="middle" x="317" y="132">ENGG WING</text>
+<rect fill="#eae8e2" height="50" rx="8" width="65" x="40" y="70"></rect>
+<text fill="#73777c" font-family="Plus Jakarta Sans" font-size="7" font-weight="600" letter-spacing="0.08em" text-anchor="middle" x="72" y="98">HOSTEL BLK A</text>
+<rect fill="#eae8e2" height="60" rx="8" width="80" x="45" y="340"></rect>
+<text fill="#73777c" font-family="Plus Jakarta Sans" font-size="7" font-weight="600" letter-spacing="0.08em" text-anchor="middle" x="85" y="374">SPORTS COMPLEX</text>
+<!-- Campus Arterial Roads & Boulevards (Tonal Hairlines) -->
+<!-- Secondary Pathways -->
+<path d="M0 120 L400 120" stroke="#ffffff" stroke-linecap="round" stroke-width="8"></path>
+<path d="M160 0 L160 480" stroke="#ffffff" stroke-linecap="round" stroke-width="8"></path>
+<path d="M70 200 C150 200 240 280 400 270" stroke="#ffffff" stroke-linecap="round" stroke-width="7"></path>
+<path d="M0 380 Q180 370 250 480" stroke="#ffffff" stroke-linecap="round" stroke-width="7"></path>
+<!-- University Ring Avenue (Main Bus Conduit) -->
+<path d="M 60 440 L 60 210 Q 60 140 130 140 L 230 140 Q 310 140 310 220 L 310 390 Q 310 440 230 440 Z" id="busRouteBackdrop" stroke="#e4e2dd" stroke-linecap="round" stroke-linejoin="round" stroke-width="6"></path>
+<!-- Active Transit Route 03 Line: Deep Ink Navy with Editorial Dash -->
+<path d="M 60 440 L 60 210 Q 60 140 130 140 L 230 140 Q 310 140 310 220 L 310 390 Q 310 440 230 440 Z" id="activeTransitPath" stroke="#021625" stroke-dasharray="6 4" stroke-linecap="round" stroke-linejoin="round" stroke-width="3.5"></path>
+<!-- Route Stop Nodes Along Track -->
+<!-- Node 1: Sports Arena -->
+<circle cx="60" cy="420" fill="#fbf9f3" r="5" stroke="#021625" stroke-width="2.5"></circle>
+<!-- Node 2: Hostel Gate (Passed/Active) -->
+<circle cx="60" cy="220" fill="#536254" r="6.5"></circle>
+<circle cx="60" cy="220" fill="#ffffff" r="3"></circle>
+<text fill="#021625" font-family="Plus Jakarta Sans" font-size="9" font-weight="600" x="74" y="224">Hostel Gate</text>
+<!-- Node 3: North Library (Stop) -->
+<circle cx="180" cy="140" fill="#fbf9f3" r="5" stroke="#021625" stroke-width="2.5"></circle>
+<text fill="#73777c" font-family="Plus Jakarta Sans" font-size="8.5" font-weight="500" text-anchor="middle" x="180" y="127">Central Library</text>
+<!-- Node 4: Main Gate Terminal (Upcoming Target) -->
+<circle cx="310" cy="260" fill="#172b3a" r="7"></circle>
+<circle cx="310" cy="260" fill="#cde9dc" r="3"></circle>
+<text fill="#021625" font-family="Plus Jakarta Sans" font-size="9" font-weight="700" text-anchor="end" x="296" y="264">Main Gate</text>
+<!-- Node 5: SBM South Plinth -->
+<circle cx="310" cy="380" fill="#fbf9f3" r="5" stroke="#021625" stroke-width="2.5"></circle>
+<!-- Live Bus 12 Vector Representation with Directional Heading & Ambient Waves -->
+<g transform="translate(136, 140)">
+<!-- Radiating Radar Rings -->
+<circle class="animate-ping" cx="0" cy="0" fill="#59685a" fill-opacity="0.12" r="22" style="animation-duration: 3s;"></circle>
+<circle cx="0" cy="0" fill="#d6e7d5" fill-opacity="0.45" r="14"></circle>
+<!-- Deep Navy Pill Vehicle Marker -->
+<rect fill="#021625" filter="url(#glow)" height="24" rx="12" width="36" x="-18" y="-12"></rect>
+<!-- Live Indicator Node -->
+<circle cx="-9" cy="0" fill="#cde9dc" r="3"></circle>
+<!-- Shuttle Number Badge -->
+<text fill="#ffffff" font-family="Plus Jakarta Sans" font-size="10" font-weight="700" letter-spacing="-0.02em" x="4" y="4.5">12</text>
+<!-- Micro Forward Vector Dart -->
+<path d="M 21 -3 L 26 0 L 21 3 Z" fill="#021625"></path>
+</g>
+</svg>
+<!-- Top Overlay Badge: Micro Fleet Telemetry -->
+<div class="absolute top-4 left-4 flex items-center gap-space-xs bg-surface/90 backdrop-blur-md px-3 py-1.5 rounded-full shadow-sm">
+<span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+<span class="font-label-sm text-label-sm text-on-surface font-semibold tracking-tight">Bus 12</span>
+<span class="text-outline text-[10px]">•</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">32 km/h</span>
+</div>
+<!-- Floating Map Utility Action Dock (Single-Handed Accessibility) -->
+<div class="absolute right-3.5 top-4 flex flex-col gap-2 z-10">
+<!-- Recenter Live Vehicle Position -->
+<button aria-label="Recenter bus position" class="w-10 h-10 rounded-full bg-surface-container-lowest/90 backdrop-blur-md text-primary flex items-center justify-center shadow-[0_2px_12px_rgba(23,43,58,0.08)] active:scale-95 transition-transform" id="recenterBtn">
+<span class="material-symbols-outlined text-[20px]">my_location</span>
+</button>
+<!-- Campus Route Overview Extents -->
+<button aria-label="Route Overview" class="w-10 h-10 rounded-full bg-surface-container-lowest/90 backdrop-blur-md text-on-surface-variant flex items-center justify-center shadow-[0_2px_12px_rgba(23,43,58,0.08)] active:scale-95 transition-transform" id="overviewBtn">
+<span class="material-symbols-outlined text-[20px]">route</span>
+</button>
+<!-- Layer & Stops Filter Toggle -->
+<button aria-label="Toggle map layers" class="w-10 h-10 rounded-full bg-surface-container-lowest/90 backdrop-blur-md text-on-surface-variant flex items-center justify-center shadow-[0_2px_12px_rgba(23,43,58,0.08)] active:scale-95 transition-transform" id="layersBtn">
+<span class="material-symbols-outlined text-[20px]">layers</span>
+</button>
+<!-- Urgent Transport Assistance / Campus SOS Hotline -->
+<button aria-label="NMIMS Transport Desk Emergency" class="w-10 h-10 rounded-full bg-error-container text-on-error-container flex items-center justify-center shadow-[0_2px_12px_rgba(23,43,58,0.08)] active:scale-95 transition-transform" id="sosBtn">
+<span class="material-symbols-outlined text-[19px]">fmd_bad</span>
+</button>
+</div>
+<!-- Map Compass Watermark (Subtle Editorial Detailing) -->
+<div class="absolute bottom-4 left-4 pointer-events-none opacity-40 flex items-center gap-1">
+<span class="font-label-sm text-label-sm font-semibold tracking-widest text-on-surface-variant">NMIMS SHIRPUR CAMPUS</span>
+</div>
+</div>
+<!-- Editorial Warm Mobility Bottom Sheet / Status Hub -->
+<div class="px-margin -mt-4 z-20 pb-4">
+<div class="w-full bg-surface-container-lowest rounded-xl shadow-[0_4px_24px_-2px_rgba(23,43,58,0.08)] p-space-md flex flex-col gap-3.5">
+<!-- Card Pull Handle Indicator -->
+<div class="w-9 h-1 rounded-full bg-surface-variant self-center mb-0.5"></div>
+<!-- Header: Identification & Dynamic Pill Status -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded-lg bg-primary flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined text-[16px]">directions_bus</span>
+</div>
+<div>
+<div class="flex items-center gap-1.5 leading-none">
+<span class="font-headline-sm text-headline-sm text-primary tracking-tight font-bold">BUS 12</span>
+<span class="text-on-surface-variant text-label-sm font-medium">/</span>
+<span class="font-label-lg text-label-lg text-on-surface-variant font-medium">Route 03</span>
+</div>
+<span class="font-body-sm text-body-sm text-outline">Express Ring Shuttle</span>
+</div>
+</div>
+<!-- Muted Sage Pulsing Status Pill Badge -->
+<div class="px-2.5 py-1 rounded-full bg-secondary-container flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-secondary animate-ping" style="animation-duration: 2.2s;"></span>
+<span class="font-label-sm text-label-sm text-on-secondary-container font-semibold tracking-wide uppercase">On route</span>
+</div>
+</div>
+<!-- Focal ETA & Metric Panel -->
+<div class="w-full bg-surface-container-low rounded-xl p-3 flex items-center justify-between">
+<!-- Station Waypoints Segment -->
+<div class="flex flex-col gap-2 min-w-0 pr-2">
+<!-- Current Station -->
+<div class="flex items-center gap-2 min-w-0">
+<div class="w-2 h-2 rounded-full bg-secondary flex-shrink-0"></div>
+<div class="min-w-0">
+<p class="font-label-sm text-[10px] uppercase tracking-wider text-outline leading-none">Departed</p>
+<p class="font-label-md text-label-md text-on-surface font-semibold truncate leading-tight mt-0.5">Hostel Gate</p>
+</div>
+</div>
+<!-- Vertical Micro Guide -->
+<div class="w-[1.5px] h-3 bg-secondary-fixed-dim ml-[3px] rounded-full"></div>
+<!-- Approaching Station -->
+<div class="flex items-center gap-2 min-w-0">
+<div class="w-2 h-2 rounded-full bg-primary flex-shrink-0"></div>
+<div class="min-w-0">
+<p class="font-label-sm text-[10px] uppercase tracking-wider text-outline leading-none">Next Stop</p>
+<p class="font-label-md text-label-md text-primary font-bold truncate leading-tight mt-0.5">Main Campus Gate</p>
+</div>
+</div>
+</div>
+<!-- Big Bold Minimalist ETA Counter Box -->
+<div class="flex-shrink-0 bg-surface-container-lowest px-4 py-2 rounded-lg text-right flex flex-col items-end shadow-sm">
+<span class="font-label-sm text-[10px] uppercase font-semibold text-outline tracking-wider leading-none">Arrival</span>
+<div class="flex items-baseline gap-0.5 mt-0.5">
+<span class="font-display-lg text-display-lg text-primary tracking-tight font-bold leading-none">08</span>
+<span class="font-label-md text-label-md text-primary font-semibold">min</span>
+</div>
+<span class="font-label-sm text-[10px] text-secondary font-medium">850m away</span>
+</div>
+</div>
+<!-- Telemetry Heartbeat & Driver Identity Micro-Row -->
+<div class="flex items-center justify-between px-1">
+<div class="flex items-center gap-1.5 text-on-surface-variant">
+<span class="material-symbols-outlined text-[15px] text-secondary">satellite_alt</span>
+<span class="font-label-sm text-label-sm font-medium">Live GPS updating</span>
+<span class="text-outline text-[10px]">•</span>
+<span class="font-label-sm text-label-sm font-medium text-outline" id="gpsTicker">12s ago</span>
+</div>
+<div class="flex items-center gap-1.5">
+<div class="w-4 h-4 rounded-full bg-surface-container-highest flex items-center justify-center">
+<span class="material-symbols-outlined text-[11px] text-on-surface-variant">airline_seat_recline_normal</span>
+</div>
+<span class="font-label-sm text-label-sm font-semibold text-on-surface">14 Seats Free</span>
+</div>
+</div>
+<!-- Action Button Group -->
+<div class="grid grid-cols-2 gap-2.5 pt-1">
+<!-- Stop List Secondary Action -->
+<button class="h-[48px] rounded-full bg-surface-container text-primary font-label-lg text-label-lg font-semibold flex items-center justify-center gap-1.5 hover:bg-surface-container-high active:scale-[0.98] transition-all" id="openStopsModalBtn">
+<span class="material-symbols-outlined text-[19px]">format_list_bulleted</span>
+<span>Stop List</span>
+</button>
+<!-- Share ETA Primary Button -->
+<button class="h-[48px] rounded-full bg-primary text-on-primary font-label-lg text-label-lg font-semibold flex items-center justify-center gap-1.5 shadow-[0_4px_12px_rgba(2,22,37,0.18)] active:scale-[0.98] transition-all" id="shareEtaBtn">
+<span class="material-symbols-outlined text-[19px]">share_location</span>
+<span>Share ETA</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Quick Info Drawer Component: Route 03 Stations (Hidden toggleable preview) -->
+<div class="hidden px-margin pb-6" id="stopsDrawer">
+<div class="w-full bg-surface-container rounded-xl p-space-md flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<h2 class="font-headline-sm text-headline-sm text-primary">Route 03 Stations</h2>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">6 Total Stops</span>
+</div>
+<!-- Stop Sequence Timeline -->
+<div class="flex flex-col gap-2.5 relative pl-2">
+<!-- Stop Item 1 -->
+<div class="flex items-start gap-3 relative">
+<div class="w-4 h-4 rounded-full bg-surface-container-highest flex items-center justify-center flex-shrink-0 mt-0.5">
+<span class="w-2 h-2 rounded-full bg-outline"></span>
+</div>
+<div class="flex-1 flex justify-between items-baseline">
+<span class="font-body-md text-body-md text-on-surface-variant line-through opacity-75">Sports Pavilion</span>
+<span class="font-label-sm text-label-sm text-outline">08:14 AM</span>
+</div>
+</div>
+<!-- Stop Item 2 -->
+<div class="flex items-start gap-3 relative">
+<div class="w-4 h-4 rounded-full bg-secondary-container flex items-center justify-center flex-shrink-0 mt-0.5">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+</div>
+<div class="flex-1 flex justify-between items-baseline">
+<span class="font-body-md text-body-md text-on-surface font-semibold">Hostel Gate (Departed)</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">08:21 AM</span>
+</div>
+</div>
+<!-- Stop Item 3 (Current Goal) -->
+<div class="flex items-start gap-3 relative">
+<div class="w-4 h-4 rounded-full bg-primary flex items-center justify-center flex-shrink-0 mt-0.5">
+<span class="w-2 h-2 rounded-full bg-primary-fixed"></span>
+</div>
+<div class="flex-1 flex justify-between items-baseline">
+<div>
+<span class="font-body-md text-body-md text-primary font-bold">Main Campus Gate</span>
+<span class="ml-1.5 px-1.5 py-0.5 rounded bg-secondary-container text-on-secondary-container font-label-sm text-[10px] font-semibold">NEXT</span>
+</div>
+<span class="font-label-sm text-label-sm text-primary font-bold">08:30 AM</span>
+</div>
+</div>
+<!-- Stop Item 4 -->
+<div class="flex items-start gap-3 relative">
+<div class="w-4 h-4 rounded-full bg-surface-container-highest flex items-center justify-center flex-shrink-0 mt-0.5">
+<span class="w-2 h-2 rounded-full bg-outline"></span>
+</div>
+<div class="flex-1 flex justify-between items-baseline">
+<span class="font-body-md text-body-md text-on-surface">Central Quad Library</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">08:35 AM</span>
+</div>
+</div>
+<!-- Stop Item 5 -->
+<div class="flex items-start gap-3 relative">
+<div class="w-4 h-4 rounded-full bg-surface-container-highest flex items-center justify-center flex-shrink-0 mt-0.5">
+<span class="w-2 h-2 rounded-full bg-outline"></span>
+</div>
+<div class="flex-1 flex justify-between items-baseline">
+<span class="font-body-md text-body-md text-on-surface">SBM Academic Concourse</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">08:42 AM</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Toast Notification Overlay for Instant Interactions -->
+<div class="fixed bottom-6 inset-x-4 max-w-sm mx-auto bg-primary text-on-primary px-4 py-3 rounded-full shadow-xl flex items-center justify-between gap-3 transform translate-y-24 opacity-0 pointer-events-none transition-all duration-300 z-50" id="toastNotification">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-[19px] text-primary-fixed" id="toastIcon">check_circle</span>
+<span class="font-label-md text-label-md font-medium" id="toastMsg">Live tracking link copied</span>
+</div>
+<button class="w-6 h-6 rounded-full flex items-center justify-center hover:bg-surface-container-lowest/10" id="toastCloseBtn">
+<span class="material-symbols-outlined text-[16px]">close</span>
+</button>
+</div>
+</div>
+<script>
+  (function() {
+    // Interactive state for Drawer toggle
+    const toggleStopsBtn = document.getElementById('openStopsModalBtn');
+    const stopsDrawer = document.getElementById('stopsDrawer');
+    const shareEtaBtn = document.getElementById('shareEtaBtn');
+    const recenterBtn = document.getElementById('recenterBtn');
+    const sosBtn = document.getElementById('sosBtn');
+    const toast = document.getElementById('toastNotification');
+    const toastMsg = document.getElementById('toastMsg');
+    const toastIcon = document.getElementById('toastIcon');
+    const toastCloseBtn = document.getElementById('toastCloseBtn');
+    const gpsTicker = document.getElementById('gpsTicker');
+
+    function showToast(message, icon) {
+      if (!toast) return;
+      toastMsg.textContent = message;
+      if (icon && toastIcon) toastIcon.textContent = icon;
+      toast.classList.remove('translate-y-24', 'opacity-0', 'pointer-events-none');
+      toast.classList.add('translate-y-0', 'opacity-100');
+
+      setTimeout(() => {
+        hideToast();
+      }, 3400);
+    }
+
+    function hideToast() {
+      if (!toast) return;
+      toast.classList.add('translate-y-24', 'opacity-0', 'pointer-events-none');
+      toast.classList.remove('translate-y-0', 'opacity-100');
+    }
+
+    if (toastCloseBtn) {
+      toastCloseBtn.addEventListener('click', hideToast);
+    }
+
+    if (toggleStopsBtn && stopsDrawer) {
+      toggleStopsBtn.addEventListener('click', function() {
+        const isHidden = stopsDrawer.classList.contains('hidden');
+        if (isHidden) {
+          stopsDrawer.classList.remove('hidden');
+          toggleStopsBtn.classList.add('bg-surface-variant');
+          stopsDrawer.scrollIntoView({ behavior: 'smooth', block: 'end' });
+        } else {
+          stopsDrawer.classList.add('hidden');
+          toggleStopsBtn.classList.remove('bg-surface-variant');
+        }
+      });
+    }
+
+    if (shareEtaBtn) {
+      shareEtaBtn.addEventListener('click', function() {
+        if (navigator.share) {
+          navigator.share({
+            title: 'ENROUTE Bus 12 Tracking',
+            text: 'Catching Bus 12 arriving at Main Campus Gate in 8 minutes!',
+            url: window.location.href,
+          }).catch(function() {
+            showToast('ETA link copied to clipboard', 'content_copy');
+          });
+        } else {
+          showToast('Live tracking link copied to clipboard', 'content_copy');
+        }
+      });
+    }
+
+    if (recenterBtn) {
+      recenterBtn.addEventListener('click', function() {
+        showToast('Centered on Bus 12 (Campus Loop)', 'my_location');
+      });
+    }
+
+    if (sosBtn) {
+      sosBtn.addEventListener('click', function() {
+        showToast('Connected to NMIMS Transport Desk Desk: 02563-286545', 'emergency');
+      });
+    }
+
+    // Dynamic Micro-Ticker Simulation for Living Telemetry feel
+    let secondsAgo = 12;
+    setInterval(function() {
+      secondsAgo++;
+      if (secondsAgo > 45) {
+        secondsAgo = 3;
+      }
+      if (gpsTicker) {
+        gpsTicker.textContent = secondsAgo + 's ago';
+      }
+    }, 4000);
+  })();
+</script></main></body></html>

@@ -1,0 +1,35 @@
+# Gradle & Build Directories
+build/
+**/build/
+.gradle/
+**/.gradle/
+buildOutput/
+
+# Java & Kotlin artifacts
+*.class
+
+# Local configuration files
+local.properties
+**/local.properties
+
+# Logs
+*.log
+
+# IDE files
+.idea/
+**/.idea/
+*.iml
+**/*.iml
+.vscode/
+
+# OS metadata
+.DS_Store
+Thumbs.db
+
+# Google Services & Firebase Secrets
+google-services.json
+**/google-services.json
+
+# Android binaries
+*.apk
+*.aab

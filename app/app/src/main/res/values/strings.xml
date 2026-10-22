@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">EnRoute</string>
+    <string name="tagline_campus">NMIMS Campus Transit</string>
+    <string name="title_student_mode">Student Live Map</string>
+    <string name="subtitle_student_mode">Track campus shuttles in real-time, view ETAs and routes</string>
+    <string name="title_driver_mode">Driver Beacon Kiosk</string>
+    <string name="subtitle_driver_mode">One-tap automated hardware GPS broadcasting</string>
+    <string name="status_live_on_route">LIVE / ON ROUTE</string>
+    <string name="status_idle">STANDBY / IDLE</string>
+</resources>
